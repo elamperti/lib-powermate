@@ -1,4 +1,4 @@
-# :control_knobs: lib-powermate 
+# :control_knobs: lib-powermate ![PyPI version](https://badge.fury.io/py/lib-powermate.svg)
 
 This Python library is intended to handle Griffin Powermate wheel(s) events.
 
