@@ -36,7 +36,7 @@ pip install lib-powermate
     Returns an array of PowerMate wheel devices. Raises a `DeviceNotFound` exception if none found.
 
 ## PowerMateWheel class
-Receives an evdev device as parameter, which can be obtained with the `find_wheels()` function.
+Receives an optional device as parameter, which can be obtained with the `find_wheels()` function. If no device is specified, `set_device()` must be called with a valid device before using the wheel, otherwise it will fail.
 
 ### Getters and setters
 
@@ -54,9 +54,14 @@ Receives an evdev device as parameter, which can be obtained with the `find_whee
     `True` if the current instance is ignoring multiple twists (see `ignore_multiple_twists` method) and the wheel has been pressed, then turned.
 
 #### Setters
+  * **`set_device`**`(<device new_device>)`
+    
+    Sets the device to be used by the current instance.
+
   * **`set_logger`**`(<logger new_logger>)`
     
     Changes the logger used by the current instance. Mostly useful for debugging purposes.
+
 
 ### Methods
   * **`ignore_all_events`**`([<bool value=True>])`

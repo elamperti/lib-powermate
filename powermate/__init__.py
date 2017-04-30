@@ -25,9 +25,11 @@ import errno
 
 
 class PowerMateWheel():
-    def __init__(self, device):
-        self.__device = device
+    def __init__(self, device=None):
         self.__logger = logging.getLogger('lib-powermate')
+
+        if device != None:
+            self.set_device(device)
 
         self.__wheel_pressed = False
         self.__ignore_multiple_twists = False
@@ -51,6 +53,9 @@ class PowerMateWheel():
 
     def ignore_multiple_twists(self, value=True):
         self.__ignore_multiple_twists = value
+
+    def set_device(self, device):
+        self.__device = InputDevice(device)
 
     def get_device(self):
         return self.__device
@@ -84,9 +89,9 @@ class PowerMateWheel():
             raise NameError('Event %s not implemented' % event_name)
 
     def listen(self):
-        self.__logger.info('Listening on device %s' % self.__device)
+        self.__logger.info('Listening on device %s' % self.__device.fn)
         try:
-            for event in InputDevice(self.__device).read_loop():
+            for event in self.__device.read_loop():
                 # ignore synchronization events
                 if self.__ignore_all_events or event.type == ecodes.EV_SYN:
                     continue
