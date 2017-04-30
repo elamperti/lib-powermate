@@ -69,6 +69,15 @@ class PowerMateWheel():
     def set_logger(self, new_logger):
         self.__logger = new_logger
 
+    def brightness(self, level):
+        self.__device.write(ecodes.EV_MSC, ecodes.MSC_PULSELED, level % 256)
+
+    def led_on(self):
+        self.brightness(255)
+
+    def led_off(self):
+        self.brightness(0)
+
     def on(self, event_name, your_function):
         if not callable(your_function):
             raise TypeError('Expected a callable')

@@ -80,6 +80,18 @@ Receives an optional device as parameter, which can be obtained with the `find_w
     
     Starts listening for events.
 
+  * **`brightness`**`(<byte level>)`
+    
+    Defines the LED brightness level (0 is off, 255 is full brightness)
+ 
+  * **`led_on()`**
+    
+    Turns LED on.
+
+  * **`led_off()`**
+    
+    Turns LED off.
+
 ### Events
   * **`press`**: Triggered when the wheel is pressed down.
   * **`depress`**: Triggered when the wheel is unpressed/released. (Alias: `release`)
